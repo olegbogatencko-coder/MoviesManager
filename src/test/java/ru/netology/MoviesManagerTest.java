@@ -15,12 +15,8 @@ public class MoviesManagerTest {
         manager.add("Film 5");
         manager.add("Film 6");
         String[] last = manager.findLast();
-        assertEquals(5, last.length);
-        assertEquals("Film 6", last[0]);
-        assertEquals("Film 5", last[1]);
-        assertEquals("Film 4", last[2]);
-        assertEquals("Film 3", last[3]);
-        assertEquals("Film 2", last[4]);
+        String[] expected = {"Film 6", "Film 5", "Film 4", "Film 3", "Film 2"};
+        assertArrayEquals(expected, last);
     }
 
     @Test
@@ -31,10 +27,8 @@ public class MoviesManagerTest {
         manager.add("C");
         manager.add("D");
         String[] last = manager.findLast();
-        assertEquals(3, last.length);
-        assertEquals("D", last[0]);
-        assertEquals("C", last[1]);
-        assertEquals("B", last[2]);
+        String[] expected = {"D", "C", "B"};
+        assertArrayEquals(expected, last);
     }
 
     @Test
@@ -44,19 +38,17 @@ public class MoviesManagerTest {
         manager.add("Second");
         manager.add("Third");
         String[] all = manager.findAll();
-        assertEquals(3, all.length);
-        assertEquals("First", all[0]);
-        assertEquals("Second", all[1]);
-        assertEquals("Third", all[2]);
+        String[] expected = {"First", "Second", "Third"};
+        assertArrayEquals(expected, all);
     }
 
     @Test
     void shouldReturnEmptyArrayWhenNoMovies() {
         MoviesManager manager = new MoviesManager();
         String[] all = manager.findAll();
-        assertEquals(0, all.length);
+        assertArrayEquals(new String[0], all);
         String[] last = manager.findLast();
-        assertEquals(0, last.length);
+        assertArrayEquals(new String[0], last);
     }
 
     @Test
@@ -65,9 +57,8 @@ public class MoviesManagerTest {
         manager.add("X");
         manager.add("Y");
         String[] last = manager.findLast();
-        assertEquals(2, last.length);
-        assertEquals("Y", last[0]);
-        assertEquals("X", last[1]);
+        String[] expected = {"Y", "X"};
+        assertArrayEquals(expected, last);
     }
 
     @Test
@@ -77,8 +68,7 @@ public class MoviesManagerTest {
         manager.add("Two");
         manager.add("Three");
         String[] last = manager.findLast();
-        assertEquals(2, last.length);
-        assertEquals("Three", last[0]);
-        assertEquals("Two", last[1]);
+        String[] expected = {"Three", "Two"};
+        assertArrayEquals(expected, last);
     }
 }
